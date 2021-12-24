@@ -1,0 +1,62 @@
+﻿@model ParfumeShop.ViewModels.ParfumeVM;
+@{
+    var title = "Create a New Song";
+}
+<div>
+    <form method="post" asp-action="Create">
+        @if (Model.Parfume != null)
+        {
+            // this is update action
+            <input asp-for="Parfume.Id" hidden>
+            title = "Update Parfume";
+        }
+
+        <h2 class="mb-3">@title</h2>
+
+        <div class="form-group row">
+            <label asp-for="Parfume.Name" class="col-4"></label>
+            <input asp-for="Parfume.Name" class="form-control col-8">
+            <span asp-validation-for="Parfume.Name" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Parfume.Company" class="col-4"></label>
+            <input asp-for="Parfume.Company" class="form-control col-8">
+            <span asp-validation-for="Parfume.Company" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Parfume.Category" class="col-4"></label>
+            <select asp-for="Parfume.Category" asp-items="@Model.Categories" class="form-control col-8">
+                <option selected disabled>--Select Category--</option>
+            </select>
+            <span asp-validation-for="Parfume.CategoryId" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Parfume.Description" class="col-4"></label>
+            <input asp-for="Parfume.Description" class="form-control col-8">
+            <span asp-validation-for="Parfume.Description" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Parfume.Price" class="col-4"></label>
+            <input asp-for="Parfume.Price" class="form-control col-8">
+            <span asp-validation-for="Parfume.Price" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                
+                <input type="submit" id="subm" class="btn btn-success w-100" />
+            </div>
+
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@* Client Validation *@
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+}
