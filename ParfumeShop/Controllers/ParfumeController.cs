@@ -52,7 +52,7 @@ namespace ParfumeShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Upsert(ParfumeVM model)
+        public async Task<IActionResult> Upsert(ParfumeVM model)
         {
             //var oldParfume = _context.Parfumes.Find(model.Parfume.Id);
             //if (!ModelState.IsValid) return NotFound();
@@ -85,7 +85,7 @@ namespace ParfumeShop.Controllers
                 _context.Parfumes.Update(model.Parfume);
             }
             
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
 
             return RedirectToAction(nameof(Index));

@@ -9,21 +9,20 @@
     </div>
     @if (Model.Any())
     {
-        <div class="d-flex flex-wrap bg-light p-2 justify-content-between ">
+        <div class="d-flex flex-wrap gap-5 justify-content-end">
             @foreach (Parfume parfume in Model)
             {
                 <div class="card parfume-item">
                     @if (parfume.Image == null)
                     {
-                        <img style="width: 18rem;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" />
+                        <img style="width: 100%; height:200px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" />
                     }
                     else
                     {
-                        <img style="width: 18rem;" src='@WebConstants.productImagesPath@parfume.Image' />
+                        <img style="width: 100%; height:200px;" src='@WebConstants.productImagesPath@parfume.Image' />
                     }
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h2>@parfume?.Company <span>@parfume.Name</span></h2>
-                        
                         <p>@parfume.Category.Name</p>
                         <p>@parfume?.Description</p>
                         <h3>@parfume.Price<span> UAH</span></h3>
@@ -91,6 +90,4 @@
                     {
                     <p>List is empty!</p>
                     }*@
-                
-}
 </div>

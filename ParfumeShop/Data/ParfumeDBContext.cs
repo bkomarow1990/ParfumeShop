@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ParfumeShop.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ParfumeShop.Data
 {
-    public class ParfumeDBContext : DbContext
+    public class ParfumeDBContext : IdentityDbContext
     {
         public ParfumeDBContext(DbContextOptions options) : base(options)
         {
@@ -25,7 +26,8 @@ namespace ParfumeShop.Data
             optionsBuilder.UseLazyLoadingProxies();
             base.OnConfiguring(optionsBuilder);
         }
-        public DbSet<Parfume> Parfumes { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Parfume> Parfumes { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public new virtual DbSet<User> Users { get; set; }
     }
 }

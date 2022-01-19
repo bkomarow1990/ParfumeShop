@@ -1,10 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\ParfumeShop",
-    "\\ParfumeShop\\Controllers",
-    "\\ParfumeShop\\Models"
+    ""
   ],
-  "SelectedNode": "\\ParfumeShop\\Models\\Category.cs",
   "PreviewInSolutionExplorer": false
 }

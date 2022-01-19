@@ -74,20 +74,20 @@ body {
     INDEX
 */
 .parfume-item{
+    flex: 1 1 auto;
     margin-bottom: 20px;
     background-color: lightgray;
 }
-.parfume-item img{
+/*.parfume-item img{
     width: 200px;
     height: 200px;
 }
-
+*/
 /*
     UPSERT
 */
 .upsert-image{
     /*max-width: 100%;
     height: auto;*/
-    width: 200px;
-    height: 200px;
+    width: 12rem;
 }
