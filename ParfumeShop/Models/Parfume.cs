@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace ParfumeShop.Models
 {
     public class Parfume
@@ -14,7 +15,8 @@ namespace ParfumeShop.Models
         public float Price { get; set; }
         public string Description { get; set; }
         public int CategoryId { get; set; }
-        [Required]
+
         public virtual Category Category { get; set; }
+        public string Image { get; set; }
     }
 }

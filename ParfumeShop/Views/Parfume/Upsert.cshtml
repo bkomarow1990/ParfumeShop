@@ -1,14 +1,15 @@
-﻿@model ParfumeShop.ViewModels.ParfumeVM;
+﻿@using ParfumeShop.Controllers
+@model ParfumeShop.ViewModels.ParfumeVM;
 @{
-    var title = "Create a New Song";
+    var title = "Create a New Product";
 }
 <div>
-    <form method="post" asp-action="Create">
+    <form method="post" asp-action="Upsert" enctype="multipart/form-data">
         @if (Model.Parfume != null)
         {
             // this is update action
             <input asp-for="Parfume.Id" hidden>
-            title = "Update Parfume";
+            title = "Update Product";
         }
 
         <h2 class="mb-3">@title</h2>
@@ -24,8 +25,8 @@
             <span asp-validation-for="Parfume.Company" class="offset-4 text-danger"></span>
         </div>
         <div class="form-group row">
-            <label asp-for="Parfume.Category" class="col-4"></label>
-            <select asp-for="Parfume.Category" asp-items="@Model.Categories" class="form-control col-8">
+            <label asp-for="Parfume.CategoryId" class="col-4"></label>
+            <select asp-for="Parfume.CategoryId" asp-items="@Model.Categories" class="form-control col-8">
                 <option selected disabled>--Select Category--</option>
             </select>
             <span asp-validation-for="Parfume.CategoryId" class="offset-4 text-danger"></span>
@@ -41,9 +42,29 @@
             <span asp-validation-for="Parfume.Price" class="offset-4 text-danger"></span>
         </div>
         <div class="form-group row">
+            <label asp-for="Image" class="col-4"></label>
+            <input asp-for="Image" class="form-control col-8" type="file">
+            @* <span asp-validation-for="Parfume.Image" class="offset-4 text-danger"></span> *@
+        </div>
+        @* <div class="form-group row"> *@
+        @*     <label asp-for="Parfume.Image" class="col-4"></label> *@
+        @*     <input asp-for="Parfume.Image" class="form-control col-8" type="file"> *@
+        @*     <span asp-validation-for="Parfume.Image" class="offset-4 text-danger">  </span> *@
+        @* </div> *@
+        <div class="form-group row p-3">
+            @if (Model.Parfume == null || Model.Parfume.Image == null)
+            {
+                <img class="rounded upsert-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"/>
+            }
+            else
+            {
+                <img src='@WebConstants.productImagesPath@Model.Parfume.Image'/>
+            }
+        </div>
+        <div class="form-group row">
             <div class="col-6">
-                
-                <input type="submit" id="subm" class="btn btn-success w-100" />
+
+                <input type="submit" id="subm" class="btn btn-success w-100"/>
             </div>
 
             <div class="col-6">
@@ -54,9 +75,10 @@
 </div>
 
 @* Client Validation *@
+
 @section Scripts
 {
     @{
-        <partial name="_ValidationScriptsPartial.cshtml" />
+        <partial name="_ValidationScriptsPartial.cshtml"/>
     }
 }
