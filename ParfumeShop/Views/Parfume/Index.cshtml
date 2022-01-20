@@ -9,10 +9,10 @@
     </div>
     @if (Model.Any())
     {
-        <div class="d-flex flex-wrap gap-5 justify-content-end">
+        <ul class="products_container">
             @foreach (Parfume parfume in Model)
             {
-                <div class="card parfume-item">
+                <div class="parfume-item">
                     @if (parfume.Image == null)
                     {
                         <img style="width: 100%; height:200px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" />
@@ -35,7 +35,7 @@
                    </div>
                 </div>
             }
-            </div>
+            </ul>
             }
           else
           {

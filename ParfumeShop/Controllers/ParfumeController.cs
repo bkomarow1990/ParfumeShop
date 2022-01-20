@@ -69,7 +69,7 @@ namespace ParfumeShop.Controllers
 
             //}
             var files = HttpContext.Request.Form.Files;
-            if (files != null)
+            if (files != null && files.Count() != 0)
             {
                 string fileName = SaveImage(files[0]);
                 model.Parfume.Image = fileName;

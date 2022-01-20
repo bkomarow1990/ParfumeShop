@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@using ParfumeShop.Controllers
+@using ParfumeShop.Utilities
+@inject IHttpContextAccessor HttpContextAccessor;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,9 +31,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Parfume" asp-action="Index">Parfumes</a>
                         </li>
-                        <partial name="_LoginPartial" />
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">
+                                @{
+                                    var list = HttpContextAccessor.HttpContext.Session
+                                                    .GetObject<IEnumerable<ShoppingProduct>>(WebConstants.cartKey);
+                                    var count = list != null ? list.Count() : 0;
+                                }
+                                <i class="fas fa-shopping-cart"></i> (@count)
+                            </a>
+                        </li>
                     </ul>
                 </div>
+                        <partial name="_LoginPartial" />
             </div>
         </nav>
     </header>

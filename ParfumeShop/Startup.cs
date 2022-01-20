@@ -33,6 +33,10 @@ namespace ParfumeShop
                 .AddDefaultTokenProviders()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ParfumeDBContext>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+            });
             services.AddSession();
             services.AddControllersWithViews();
         }

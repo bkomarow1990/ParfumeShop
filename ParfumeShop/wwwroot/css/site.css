@@ -73,10 +73,23 @@ body {
 /* 
     INDEX
 */
-.parfume-item{
-    flex: 1 1 auto;
-    margin-bottom: 20px;
-    background-color: lightgray;
+.products_container {
+    list-style: none;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+.parfume-item {
+    flex-grow: 1;
+    flex-shrink: 1;
+    /* width: calc(33% - 10px);*/
+    border-radius: 20px;
+    /*    flex: 1 1 auto;
+    margin-bottom: 20px;*/
+    background-color: #ececec;
 }
 /*.parfume-item img{
     width: 200px;
