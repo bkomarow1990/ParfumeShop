@@ -10,7 +10,7 @@ using ParfumeShop.Data;
 namespace ParfumeShop.Migrations
 {
     [DbContext(typeof(ParfumeDBContext))]
-    [Migration("20220120220307_Init")]
+    [Migration("20220121165431_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
