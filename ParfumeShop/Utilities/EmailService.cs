@@ -21,23 +21,23 @@ namespace ParfumeShop.Utilities
         private readonly IConfiguration _configuration;
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            //MailJetSettings settings = _configuration.GetSection();
-            MailjetClient client = new MailjetClient(Environment.GetEnvironmentVariable("MyUsername"), Environment.GetEnvironmentVariable("Mysecret"));
+            MailJetSettings settings = _configuration.GetSection("MailJet").Get<MailJetSettings>();
+            MailjetClient client = new MailjetClient(settings.ApiKey, settings.ApiSecret);
             MailjetRequest request = new MailjetRequest
             {
                 Resource = Send.Resource,
             }
-               .Property(Send.FromEmail, "from@solution.com")
+               .Property(Send.FromEmail, "brilliantperfumes@protonmail.com")
                .Property(Send.FromName, "BrilliantParfumeShop")
                .Property(Send.Subject, "Your email flight plan!")
                .Property(Send.TextPart, "Dear passenger, welcome to BrilliantParfumeShop! May the delivery force be with you!")
-               .Property(Send.HtmlPart, "<h3>Dear passenger, welcome to BrilliantParfumeShop!</h3><br />May the delivery force be with you!")
+               .Property(Send.HtmlPart, htmlMessage)
                .Property(Send.Recipients, new JArray {
                 new JObject {
-                {"Email", "to@company.com"}
+                {"Email", email}
                 }
                 });
-            MailjetResponse response = await client.PostAsync(request);
+           await client.PostAsync(request);
         }
         public EmailService(IConfiguration configuration)
         {

@@ -9343,23 +9343,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gnidez\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "F:\\Visual Studio\\SDK\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gnidez\\Source\\Repos\\ParfumeShop\\ParfumeShop\\ParfumeShop.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\ParfumeShop\\ParfumeShop\\ParfumeShop.csproj",
       "projectName": "ParfumeShop",
-      "projectPath": "C:\\Users\\Gnidez\\Source\\Repos\\ParfumeShop\\ParfumeShop\\ParfumeShop.csproj",
-      "packagesPath": "C:\\Users\\Gnidez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gnidez\\Source\\Repos\\ParfumeShop\\ParfumeShop\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\source\\repos\\ParfumeShop\\ParfumeShop\\ParfumeShop.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\source\\repos\\ParfumeShop\\ParfumeShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "F:\\Visual Studio\\SDK\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gnidez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9442,7 +9443,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },

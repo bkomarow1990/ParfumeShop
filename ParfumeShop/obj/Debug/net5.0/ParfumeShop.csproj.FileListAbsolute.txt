@@ -608,3 +608,4 @@ C:\Users\Gnidez\Source\Repos\ParfumeShop\ParfumeShop\obj\Debug\net5.0\ParfumeSho
 C:\Users\Gnidez\Source\Repos\ParfumeShop\ParfumeShop\obj\Debug\net5.0\ref\ParfumeShop.dll
 C:\Users\Gnidez\Source\Repos\ParfumeShop\ParfumeShop\obj\Debug\net5.0\ParfumeShop.pdb
 C:\Users\Gnidez\Source\Repos\ParfumeShop\ParfumeShop\obj\Debug\net5.0\ParfumeShop.genruntimeconfig.cache
+C:\Users\Admin\source\repos\ParfumeShop\ParfumeShop\bin\Debug\net5.0\Mailjet.Client.dll

@@ -71,6 +71,10 @@ namespace ParfumeShop.Controllers
             var files = HttpContext.Request.Form.Files;
             if (files != null && files.Count() != 0)
             {
+                if (model.Parfume.Image == null)
+                {
+                    System.IO.File.Delete(_host.WebRootPath+WebConstants.productImagesPath+model.Parfume.Image);
+                }
                 string fileName = SaveImage(files[0]);
                 model.Parfume.Image = fileName;
             }
