@@ -1,3 +1,4 @@
+using Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +37,8 @@ namespace ParfumeShop
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ParfumeDBContext>();
             services.AddTransient<IEmailSender, EmailService>();
+            services.AddScoped<IViewRender, ViewRender>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireNonAlphanumeric = false;

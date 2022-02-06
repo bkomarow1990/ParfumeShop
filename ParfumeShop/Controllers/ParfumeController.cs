@@ -27,10 +27,34 @@ namespace ParfumeShop.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            //Include(nameof(Parfume.Category)
-            return View(_context.Parfumes.ToList());
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewData["CurrentFilter"] = searchString;
+            var perfumes = from s in _context.Parfumes
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                perfumes = perfumes.Where(s => s.Name.Contains(searchString)
+                                       || s.Company.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    perfumes = perfumes.OrderByDescending(s => s.Name);
+                    break;
+                case "Price":
+                    perfumes = perfumes.OrderBy(s => s.Price);
+                    break;
+                case "price_desc":
+                    perfumes = perfumes.OrderByDescending(s => s.Price);
+                    break;
+                default:
+                    perfumes = perfumes.OrderBy(s => s.Name);
+                    break;
+            }
+            return View(await perfumes.ToListAsync());
         }
 
         public IActionResult Upsert(int? id)
@@ -71,7 +95,7 @@ namespace ParfumeShop.Controllers
             var files = HttpContext.Request.Form.Files;
             if (files != null && files.Count() != 0)
             {
-                if (model.Parfume.Image == null)
+                if (model.Parfume.Image == null && System.IO.File.Exists(_host.WebRootPath + WebConstants.productImagesPath + model.Parfume.Image))
                 {
                     System.IO.File.Delete(_host.WebRootPath+WebConstants.productImagesPath+model.Parfume.Image);
                 }

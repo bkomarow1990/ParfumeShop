@@ -1,18 +1,32 @@
 ﻿@using ParfumeShop.Controllers
 @model IEnumerable<ParfumeShop.Models.Parfume>;
-
-<div>
-    <h2 class="text-center">Parfume List</h2>
+<div class="container">
+<div class="parfumes-admin-wrapper">
+    <h2 class="text-center display_font_regular main_text">Perfume List</h2>
 
     <div class="mb-2 text-right">
-        <a asp-controller="Parfume" asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> Create New Parfume</a>
+        <a asp-controller="Parfume" asp-action="Upsert" class="btn btn-primary"><i class="fas fa-plus"></i> Create New Perfume</a>
     </div>
     @if (Model.Any())
     {
-        <ul class="products_container">
+            <div class="perfume-control-panel">
+                <div>
+                    <h3>Sort by: </h3>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Name)</a>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">@Html.DisplayNameFor(model => model.Price)</a>
+                </div>
+                <div class="form-actions no-color search-container">
+                    <p>
+                        Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                        <input type="submit" value="Search" class="btn btn-default" /> |
+                        <a asp-action="Index">Back to Full List</a>
+                    </p>
+                </div>
+            </div>
+        <ul class="container products_container">
             @foreach (Parfume parfume in Model)
             {
-                <div class="parfume-item">
+                <li class="parfume-item">
                     @if (parfume.Image == null)
                     {
                         <img style="width: 100%; height:200px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" />
@@ -33,7 +47,7 @@
                             <a asp-controller="Parfume" asp-action="Delete" asp-route-id="@parfume.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                         </div>
                    </div>
-                </div>
+                </li>
             }
             </ul>
             }
@@ -41,53 +55,5 @@
           {
             <p>List is empty!</p>
           }
-                    @* @if (Model.Any())
-                        {
-                        <table class="table">
-                        <thead class="thead-light">
-                        <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Company</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Image</th>
-                        <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach (Parfume parfume in Model)
-                        {
-                        <tr>
-                        <td>@parfume.Name</td>
-                        <td>@parfume?.Company</td>
-                        <td>@parfume.Category.Name</td>
-                        <td>@parfume?.Description</td>
-                        <td>@parfume.Price</td>
-                        <td>
-                        @if (parfume.Image == null)
-                        {
-                        <img width="100" height="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"/>
-                        }
-                        else
-                        {
-                        <img width="100" height="100" src='@Url.Action("ShowImage", "Parfume", new {id = parfume.Id})'/>
-                        }
-                        </td>
-                        <td>
-                        <div class="btn-group">
-                        <a asp-controller="Parfume" asp-action="Upsert" asp-route-id="@parfume.Id" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</a>
-
-                        <a asp-controller="Parfume" asp-action="Delete" asp-route-id="@parfume.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
-                        </div>
-                        </td>
-                        </tr>
-                        }
-                        </tbody>
-                        </table>*@
-                    @*}*@
-                    @*else
-                    {
-                    <p>List is empty!</p>
-                    }*@
+</div>
 </div>
